@@ -1,11 +1,14 @@
-let first = 0;
+let first;
 let operator
-let second = 0;
+let second;
 let answer;
-
-function split() {
-
-};
+let array1 = [];
+let array2 = [];
+let opArray = [];
+let problem;
+let tempOperator;
+let value;
+let display;
 
 function operate(operator) {
     if (operator == "+") {
@@ -14,7 +17,7 @@ function operate(operator) {
     else if (operator == "-") {
         subtract(first, second);
     }
-    else if (operator == '*') {
+    else if (operator == 'x') {
         multiply(first, second);
     }
     else if (operator == '/') {
@@ -25,78 +28,128 @@ function operate(operator) {
 
 function add(a, b) {
     answer = a + b;
+    array1 = [answer];
+    array2 = [];
+    operator = '';
+    console.log(answer);
+    byeBye();
+    addToDisplay(answer);
+    answer ='';
 };
 
 function subtract(a, b) {
-    return a - b;
+    answer = a - b;
+    array1 = [answer];
+    array2 = [];
+    operator = '';
+    console.log(answer);
+    byeBye();
+    addToDisplay(answer);
+    answer ='';
 };
 
-function multiply(...nums) {
-    let total = 1;
-    for (i = 0; i < nums.length; i++) {
-        total *= nums[i];
-    };
-    return total;
-}
+function multiply(a, b) {
+    answer = a * b;
+    array1 = [answer];
+    array2 = [];
+    operator = '';
+    console.log(answer);
+    byeBye();
+    addToDisplay(answer);
+    answer ='';
+};
 
 function divide(a, b) {
-    return a / b;
-}
-
-function displayValues() {
-
-}
-
-let problem;
-let array=[];
-function numClick(obj) {
-    let value = obj.id;
-    let display = document.getElementById('display');
-    let text = document.createTextNode(value);
-    display.appendChild(text);
-    problem = document.querySelector('#display').innerText;
-    
-
-
-    /*
-    let value = obj.id;
-    let problem = [];
-    document.getElementById('display').textContent = value ; 
-    addNum(value);  
-    function addNum(value){ 
-    problem.push(value);
-    
+    if( b == 0){
+        alert("Don't nobody got time for that");
+        deleteAll();
     }
-    console.log(problem);*/
-}
-function opClick(obj){
-    array.push(problem); 
+    else{
+    answer = a / b;
+    array1 = [answer];
+    array2 = [];
+    operator = '';
+    console.log(answer);
     byeBye();
-    operator = obj.id;    
-    first = +array[0];
-    second = +array[1];
-    operate(operator);
-}
+    addToDisplay(answer);
+    answer ='';
+    }
+};
 
-function byeBye(){
+function numClick(obj) {
+    // if (answer) {
+    //     byeBye();
+    //     array2.push(obj.id);
+    //     text = obj.id;
+    //     addToDisplay(text);
+
+    // }
+    /*else*/ if (!operator && !second) {
+
+        array1.push(obj.id);
+        text = obj.id ;
+        addToDisplay(text);
+    }
+    else if (operator) {
+        array2.push(obj.id);
+        text = obj.id //+ "";
+        addToDisplay(text);
+    }
+    else{
+        deleteAll();
+        array1.push(obj.id);
+        text = obj.id;
+        addToDisplay(text);
+    }
+
+};
+
+function opClick(obj) {    
+    if (!array2[0]) {
+        byeBye();
+        operator = obj.id;
+    }
+    else if (array2[0]) {
+        getAnswer();
+
+    };
+    opArray.push(obj.id);
+};
+
+function byeBye() {
     const parent = document.querySelector('#display');
-    while (parent.firstChild){
+    while (parent.firstChild) {
         parent.firstChild.remove();
     }
-}
+};
 
-/*
-const numButtons = document.querySelectorAll('#numButtons');
-    numButtons.forEach((button) => {
-        button.addEventListener('click' , () => {
-            document.getElementById('display').textContent = `${button.id}` ;
-        });
-    });   */
+function deleteAll() {
+    byeBye();
+    array1 = [];
+    array2 = [];
+    operator = '';
+    first = '';
+    second = '';
 
-//const butTest = document.querySelector('#one');
-//butTest.onclick = () => document.getElementById('display').textContent = button.id ;
+};
 
+function getAnswer() {
+    if (!array2[0]){
+       
+    }
+    else{
+    byeBye();
+    second = Number(array2.join(''));
+    first = Number(array1.join(''));
+    operator = opArray[opArray.length - 1];
+    console.log(operator);
+    operate(operator);
+    }
+};
 
+function addToDisplay(obj) {
+    display = document.getElementById('display');
+    let text = document.createTextNode(obj);
+    display.appendChild(text);
+};
 
-//const one = document.querySelector('#one');
-//one.onclick = ()

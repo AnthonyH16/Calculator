@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Project</title>
+    <title>Calculator Project2</title>
     <link rel="stylesheet" href="calculator.css">
     <script src="calculator.js" defer>   </script>
 </head>
@@ -14,30 +14,43 @@
 
 <div class="calculator">
 
-<div id="display"></div>
+<div id="display"> </div>
 
+<div id = "allButtons">
 <div id="numButtons">
+    <div id = "firstRow">
+<button id = "0" class = "zero" onClick="numClick(this)">0</button>
+<button id = "." class = "point" onClick="numClick(this)">.</button>
+    </div>
+    <div id = "secondRow">
 <button id = "1" onClick="numClick(this)">1</button>
 <button id = "2" onClick="numClick(this)">2</button>
-<button id = "3">3</button>
-<button id = "4">4</button>
-<button id = "5">5</button>
-<button id = "6">6</button>
-<button id = "7">7</button>
-<button id = "8">8</button>
-<button id = "9">9</button>
-<button id = "0">0</button>
+<button id = "3" onClick="numClick(this)">3</button>
+    </div>
+    <div id ="thirdRow">
+<button id = "4" onClick="numClick(this)">4</button>
+<button id = "5" onClick="numClick(this)">5</button>
+<button id = "6" onClick="numClick(this)">6</button>
+    </div>
+    <div id = "fourthRow">
+<button id = "7" onClick="numClick(this)">7</button>
+<button id = "8" onClick="numClick(this)">8</button>
+<button id = "9" onClick="numClick(this)">9</button>
+    </div>
+    <div id = "fifthRow">
+<button id = "clear" onClick = "deleteAll()">Clear</button>
+    </div>
 </div>
 
-<div class = opBut>
-<button id = "+" onClick="opClick(this)">+</button>
+<div class = "opButtons">
+<button id = "+" class = "plus" onClick="opClick(this)">+</button>
 <button id = "-" onClick="opClick(this)">-</button>
 <button id = "x" onClick="opClick(this)">x</button>
-<button id = "/">/</button>
-<button id = "=">=</button>
-<button id = "clear">Clear</button>
-</div>
+<button id = "/" onClick="opClick(this)">/</button>
+<button id = "=" onClick = "getAnswer(this)">=</button>
 
+</div>
+</div>
 </div>
 
 </body>
